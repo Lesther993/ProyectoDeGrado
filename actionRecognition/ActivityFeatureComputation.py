@@ -33,13 +33,15 @@ def createPostureLabel(clusters, Posturefeature):
 
 def createActivitySequence(activitySequence, postureLabel):
 	print 'activitySequence: ', activitySequence
-	if len(activitySequence)==0:
-		sequence =[postureLabel]
-	elif len(activitySequence)<5 and postureLabel!=activitySequence[len(activitySequence)-1]:
-		sequence = activitySequence + [postureLabel]
-	elif len(activitySequence)==5:
-		print 'Activity Sequence', activitySequence
-		sequence=[]
+	if postureLabel !=-1:
+		if len(activitySequence)==0:
+			sequence =[postureLabel]
+		elif len(activitySequence)<5 and postureLabel!=activitySequence[len(activitySequence)-1]:
+			sequence = activitySequence + [postureLabel]
+		elif len(activitySequence)==5:
+			sequence=[]
+		else:
+			sequence = activitySequence
 	else:
 		sequence = activitySequence
 

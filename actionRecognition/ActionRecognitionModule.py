@@ -14,6 +14,7 @@ creatingClusters = False
 creatingActivitySequence = True
 numberOfClubsters = 5
 activity = 'WavingRightHand'
+# activity = 'WavingLeftHand'
 activitySequence =[]
 
 #LOAD CLOSTERS
@@ -33,17 +34,16 @@ def actionRecognition(skeletons, dispInfo):
 	f = PostureFeatureExtration.jointsNormalization(s)
 	# print 'Joints normalized: \n', f
 	if training and not creatingClusters and not creatingActivitySequence: #SAVE TRAINING DATA
+
 		if len(f)>0:
 			PostureFeatureExtration.saveTrainingData(f,activity)
 	#CREATE ACTIVITY SEQUENCE
 	elif training and creatingActivitySequence:
-		# print 'f',f
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
-		print 'Posture Label: \n', postureLabel
-
-		if postureLabel !=-1:
-			global activitySequence
-			activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence,postureLabel)
+		global activitySequence
+		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence,postureLabel)
+		if len(activitySequence)==5:
+			print 'Activity Sequence', activitySequence
 
 
 
