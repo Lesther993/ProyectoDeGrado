@@ -5,7 +5,7 @@ import pykinect
 from pykinect import nui
 from pykinect.nui import JointId
 from actionRecognition.TorsoCalcutatorModule import calculateTorso
-from actionRecognition.PostureFeatureExtration import jointsDetection
+from actionRecognition import PostureFeatureExtration
 
 SKELETON_COLORS = [THECOLORS["red"], 
                    THECOLORS["blue"], 
@@ -54,7 +54,7 @@ def drawSkeleton(screen, dispInfo, skeleton, index=0):
     drawLimbs(screen, dispInfo, skeleton, index, LEFT_LEG)
     drawLimbs(screen, dispInfo, skeleton, index, RIGHT_LEG)
     #ALL RELEVANT JOINTS
-    drawJoints(screen, dispInfo, jointsDetection(skeleton, dispInfo))
+    drawJoints(screen, dispInfo, skeleton)
     #TORSO
     drawTorso(screen, dispInfo, skeleton)
 
@@ -80,11 +80,12 @@ def drawLimbs(screen, dispInfo, pSkelton, index, positions, width = 4):
         
         start = next
 
-def drawJoints(screen, dispInfo, joints):
+def drawJoints(screen, dispInfo, skeleton):
+    joints = PostureFeatureExtration.jointsDetection(skeleton, dispInfo)
     for joint in joints :
         pygame.draw.circle(screen, SKELETON_COLORS[2], (int(joint[0]), int(joint[1])), 6, 0)
 
 
 def drawTorso(screen, dispInfo, skeleton):
-    torso = jointsDetection(skeleton, dispInfo)[0]
+    torso = PostureFeatureExtration.jointsDetection(skeleton, dispInfo)[0]
     pygame.draw.circle(screen, SKELETON_COLORS[5], (int(torso[0]), int(torso[1])), 6, 0)  

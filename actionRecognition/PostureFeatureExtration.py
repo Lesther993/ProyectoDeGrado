@@ -1,5 +1,7 @@
 
 import math
+import os
+import numpy as np
 from pykinect.nui import JointId
 import pykinect
 from pykinect import nui
@@ -64,13 +66,26 @@ def jointsNormalization(joints):
 	J2 = joints[2]
 	f=[]
 
-	for Ji in J:
-		try:
-			dx = (Ji[0]-Jo[0])/math.sqrt( ((J2[0]-Jo[0])**2) + ((J2[1]-Jo[1])**2) )
-			dy = (Ji[1]-Jo[1])/math.sqrt( ((J2[0]-Jo[0])**2) + ((J2[1]-Jo[1])**2) )
-			di = (dx, dy)
-			f.append(di)
-		except:
-			pass
+	try:
+		for Ji in J:
+				dx = (Ji[0]-Jo[0])/math.sqrt( ((J2[0]-Jo[0])**2) + ((J2[1]-Jo[1])**2) )
+				dy = (Ji[1]-Jo[1])/math.sqrt( ((J2[0]-Jo[0])**2) + ((J2[1]-Jo[1])**2) )
+				di = [dx, dy]
+				f.append(di)
+	except:
+		pass
 
 	return f
+
+
+def saveTrainingData(data, activity):
+	try:
+		os.mkdir("actionRecognition/PostureFeatures")
+	except:
+		pass
+	data2D = np.array([ data ])
+	nsamples, nx, ny = data2D.shape
+	data2D = data2D.reshape((nsamples, nx*ny)).tolist()[0]
+	fo = open('actionRecognition/PostureFeatures/'+activity+'.txt', 'a+')
+	fo.write(str(data2D)+'\n')
+	fo.close()
