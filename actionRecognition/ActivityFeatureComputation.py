@@ -26,14 +26,14 @@ def createPostureLabel(clusters, Posturefeature):
 	# print(kmeans.labels_.tolist())
 	return postureLabel
 
-def createActivitySequence(activitySequence, postureLabel):
+def createActivitySequence(activitySequence, postureLabel,numberOfClubsters):
 	print 'activitySequence: ', activitySequence
 	if postureLabel !=-1:
 		if len(activitySequence)==0:
 			sequence =[formatLabel(postureLabel)]
-		elif len(activitySequence)<5 and formatLabel(postureLabel)!=activitySequence[len(activitySequence)-1]:
+		elif len(activitySequence)<numberOfClubsters and formatLabel(postureLabel)!=activitySequence[len(activitySequence)-1]:
 			sequence = activitySequence + [formatLabel(postureLabel)]
-		elif len(activitySequence)==5:
+		elif len(activitySequence)==numberOfClubsters:
 			sequence=[]
 		else:
 			sequence = activitySequence
