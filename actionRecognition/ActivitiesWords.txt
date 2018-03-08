@@ -1,0 +1,4 @@
+{'dbebe': 'Waving right hand'}
+{'ebebe': 'Waving right hand'}
+{'ebebe': 'Waving right hand'}
+{'ebdcd': 'Waving right hand'}

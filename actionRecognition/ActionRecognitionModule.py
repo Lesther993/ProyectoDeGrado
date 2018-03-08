@@ -5,16 +5,18 @@ from TorsoCalcutatorModule import calculateTorso
 import PostureFeatureExtration
 import PostureSelection
 import ActivityFeatureComputation
-
+import Classification
 
 skeleton_to_depth_image = nui.SkeletonEngine.skeleton_to_depth_image
 
 training = True
 creatingClusters = False
-creatingActivitySequence = True
+creatingActivitySequence = False
+classifyingActivity = True
 numberOfClubsters = 5
-activity = 'WavingRightHand'
-# activity = 'WavingLeftHand'
+activityFile = 'WavingRightHand'
+# activityFile = 'WavingLeftHand'
+activity = 'Waving right hand'
 activitySequence =[]
 
 #LOAD CLOSTERS
@@ -33,10 +35,10 @@ def actionRecognition(skeletons, dispInfo):
 	#ARRAY OF JOINTS NORMALIZED. POSTURE VECTOR
 	f = PostureFeatureExtration.jointsNormalization(s)
 	# print 'Joints normalized: \n', f
-	if training and not creatingClusters and not creatingActivitySequence: #SAVE TRAINING DATA
+	if training and not creatingClusters and not creatingActivitySequence and not classifyingActivity: #SAVE TRAINING DATA
 
 		if len(f)>0:
-			PostureFeatureExtration.saveTrainingData(f,activity)
+			PostureFeatureExtration.saveTrainingData(f,activityFile)
 	#CREATE ACTIVITY SEQUENCE
 	elif training and creatingActivitySequence:
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
@@ -44,11 +46,17 @@ def actionRecognition(skeletons, dispInfo):
 		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence,postureLabel)
 		if len(activitySequence)==5:
 			print 'Activity Sequence', activitySequence
+			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
+			print 'Word for activity: ',wordForActivity
+			ActivityFeatureComputation.saveWords(wordForActivity, activity)
+
+	elif not training
 
 
-
+# Classification.loadWords()
+# print(Classification.getActivity(Classification.loadWords(),'dbebe'))
 
 #CREATE CLUSTERS OF AN ACTIVITY
 if training and creatingClusters:
-	activityVector = PostureSelection.loadTrainingData(activity)
+	activityVector = PostureSelection.loadTrainingData(activityFile)
 	PostureSelection.createClusters(activityVector, numberOfClubsters)
