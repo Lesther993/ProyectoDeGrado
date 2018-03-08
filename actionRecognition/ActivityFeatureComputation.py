@@ -22,12 +22,11 @@ def createPostureLabel(clusters, Posturefeature):
 		postureLabel = kmeans.predict([Posturefeature2D]).tolist()[0]
 	except:
 		postureLabel=-1
-	# print("labels")
-	# print(kmeans.labels_.tolist())
+
 	return postureLabel
 
 def createActivitySequence(activitySequence, postureLabel,numberOfClubsters):
-	print 'activitySequence: ', activitySequence
+	# print 'activitySequence: ', activitySequence
 	if postureLabel !=-1:
 		if len(activitySequence)==0:
 			sequence =[formatLabel(postureLabel)]
@@ -47,7 +46,7 @@ def createWordForActivity(activitySequence):
 def saveWords(wordForActivity, activity):
 	fo = open('actionRecognition/ActivitiesWords.txt', 'a+')
 	d = { wordForActivity:activity }
-	print 'Activity word to save',d
+	print 'Activity word to save', d
 	fo.write(str(d)+'\n')
 	fo.close()
 

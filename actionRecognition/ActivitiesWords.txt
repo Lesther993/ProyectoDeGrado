@@ -1,4 +1,19 @@
-{'dbebe': 'Waving right hand'}
-{'ebebe': 'Waving right hand'}
-{'ebebe': 'Waving right hand'}
-{'ebdcd': 'Waving right hand'}
+{'ebdbd': 'Waving right hand'}
+{'dbdbd': 'Waving right hand'}
+{'dbdbd': 'Waving right hand'}
+{'dbdbd': 'Waving right hand'}
+{'dbdbd': 'Waving right hand'}
+{'dbeac': 'Waving right hand'}
+{'hjaja': 'Waving left hand'}
+{'fjfjf': 'Waving left hand'}
+{'fjfjf': 'Waving left hand'}
+{'ajajh': 'Waving left hand'}
+{'fjfjo': 'Waving left hand'}
+{'onloa': 'Jumping'}
+{'aonoa': 'Jumping'}
+{'anaoa': 'Jumping'}
+{'aoaoa': 'Jumping'}
+{'aoaoa': 'Jumping'}
+{'aoano': 'Jumping'}
+{'aoana': 'Jumping'}
+{'naoan': 'Jumping'}
