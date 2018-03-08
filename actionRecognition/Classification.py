@@ -17,7 +17,10 @@ def loadWords():
 
 def getActivity(dicOfWords, word):
 	closestWord = difflib.get_close_matches(word, dicOfWords.keys(),1)
-	activity = dicOfWords[closestWord[0]]
+	if len(closestWord)>0:
+		activity = dicOfWords[closestWord[0]]
+	else:
+		activity = 'Unknown'
 	return activity
 
 

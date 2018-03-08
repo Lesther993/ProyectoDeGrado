@@ -43,7 +43,7 @@ def actionRecognition(skeletons, dispInfo):
 	elif training and creatingActivitySequence:
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
 		global activitySequence
-		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence,postureLabel,numberOfClubsters)
+		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence, postureLabel, numberOfClubsters)
 		if len(activitySequence)==numberOfClubsters:
 			# print 'Activity Sequence', activitySequence
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
@@ -53,7 +53,7 @@ def actionRecognition(skeletons, dispInfo):
 	elif not training:
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
 		global activitySequence
-		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence,postureLabel,numberOfClubsters)
+		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence, postureLabel, numberOfClubsters)
 		if len(activitySequence)==numberOfClubsters:
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
 			print 'Word for activity: ', wordForActivity
