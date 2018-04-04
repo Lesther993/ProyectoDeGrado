@@ -11,8 +11,7 @@ def loadWords():
 	for word in data:
 		word.strip()
 		word = ast.literal_eval(word)
-		for dic in word:
-			dicOfWords[dic] = word[dic]
+		dicOfWords[word.keys()[0]] = word.values()[0]
 	return dicOfWords
 
 def getActivity(dicOfWords, word):
@@ -22,7 +21,3 @@ def getActivity(dicOfWords, word):
 	else:
 		activity = 'Unknown'
 	return activity
-
-
-
-

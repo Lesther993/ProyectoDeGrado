@@ -1,7 +1,9 @@
 training = False
 creatingClusters = False
-creatingActivitySequence = False
+creatingActivitySequence = True
 numberOfClubsters = 5
-activity = 'Waving right hand'
+# activity = 'Jumping Jax'
 # activity = 'Waving left hand'
+# activity = 'DAPT'
 # activity = 'Jumping'
+activity = 'Squats'

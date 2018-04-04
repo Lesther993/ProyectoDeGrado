@@ -1,19 +1,28 @@
-{'ebdbd': 'Waving right hand'}
-{'dbdbd': 'Waving right hand'}
-{'dbdbd': 'Waving right hand'}
-{'dbdbd': 'Waving right hand'}
-{'dbdbd': 'Waving right hand'}
-{'dbeac': 'Waving right hand'}
-{'hjaja': 'Waving left hand'}
-{'fjfjf': 'Waving left hand'}
-{'fjfjf': 'Waving left hand'}
-{'ajajh': 'Waving left hand'}
-{'fjfjo': 'Waving left hand'}
-{'onloa': 'Jumping'}
-{'aonoa': 'Jumping'}
-{'anaoa': 'Jumping'}
-{'aoaoa': 'Jumping'}
-{'aoaoa': 'Jumping'}
-{'aoano': 'Jumping'}
-{'aoana': 'Jumping'}
-{'naoan': 'Jumping'}
+{'mkmkm': 'Jumping'}
+{'mkmkm': 'Jumping'}
+{'mkmkm': 'Jumping'}
+{'kmkmk': 'Jumping'}
+{'kmkmk': 'Jumping'}
+{'kmkmk': 'Jumping'}
+{'mjijm': 'Jumping Jax'}
+{'mjefe': 'Jumping Jax'}
+{'jakje': 'Jumping Jax'}
+{'fejkj': 'Jumping Jax'}
+{'jefej': 'Jumping Jax'}
+{'onaje': 'Jumping Jax'}
+{'efejk': 'Jumping Jax'}
+{'kjefe': 'Jumping Jax'}
+{'jakje': 'Jumping Jax'}
+{'efeja': 'Jumping Jax'}
+{'kjefe': 'Jumping Jax'}
+{'jkanj': 'Jumping Jax'}
+{'efejo': 'Jumping Jax'}
+{'jejan': 'Jumping Jax'}
+{'nkoak': 'Jumping Jax'}
+{'mjglh': 'Squats'}
+{'ldldl': 'Squats'}
+{'lhclh': 'Squats'}
+{'lchch': 'Squats'}
+{'clchc': 'Squats'}
+{'lcijo': 'Squats'}
+{'kmaja': 'Squats'}

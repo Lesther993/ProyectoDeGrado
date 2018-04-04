@@ -57,7 +57,7 @@ def jointsDetection(skeleton, dispInfo):
 	#FOOT LEFT
 	J19 = skeleton_to_depth_image(skeleton.SkeletonPositions[JointId.FootLeft], dispInfo.current_w, dispInfo.current_h)
 
-	return [Jo, J1, J2, J3, J4, J5, J6, J7, J8, J9, J10]
+	return [Jo, J1, J2, J3, J4, J5, J6, J7, J8, J9, J10] #Arreglo 1x11x2
 
 
 def jointsNormalization(joints):

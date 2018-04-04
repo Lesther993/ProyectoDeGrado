@@ -33,7 +33,7 @@ def depth_frame_ready(frame):
     with screen_lock:
         if skeletons is not None and draw_skeleton:
             #Recognize action
-            actionRecognition(skeletons,dispInfo)
+            actionRecognition(skeletons, dispInfo)
             # Draw skeleton
             draw_skeletons(skeletons)
         pygame.display.update()    

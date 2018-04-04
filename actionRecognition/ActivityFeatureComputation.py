@@ -25,11 +25,11 @@ def createPostureLabel(clusters, Posturefeature):
 
 	return postureLabel
 
-def createActivitySequence(activitySequence, postureLabel,numberOfClubsters):
+def createActivitySequence(activitySequence, postureLabel, numberOfClubsters):
 	# print 'activitySequence: ', activitySequence
 	if postureLabel !=-1:
 		if len(activitySequence)==0:
-			sequence =[formatLabel(postureLabel)]
+			sequence = [formatLabel(postureLabel)]
 		elif len(activitySequence)<numberOfClubsters and formatLabel(postureLabel)!=activitySequence[len(activitySequence)-1]:
 			sequence = activitySequence + [formatLabel(postureLabel)]
 		elif len(activitySequence)==numberOfClubsters:

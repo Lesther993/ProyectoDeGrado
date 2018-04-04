@@ -13,16 +13,21 @@ numberOfClubsters = settings.numberOfClubsters
 activity = settings.activity
 activityFile = settings.activity.title().replace(" ","")
 
+
+
+
+
+#CREATE CLUSTERS OF AN ACTIVITY
+if training and creatingClusters:
+	activityVector = PostureSelection.loadTrainingData(activityFile)
+	PostureSelection.createClusters(activityVector, numberOfClubsters)
+
+
 activitySequence =[]
 #LOAD CLOSTERS
-if training and creatingActivitySequence:
+if (not training) or (training and creatingActivitySequence):
 	clusters = ActivityFeatureComputation.loadClusters()
 	# print 'clusters: \n', clusters
-
-if not training:
-	clusters = ActivityFeatureComputation.loadClusters()
-	# print 'clusters: \n', clusters	
-
 
 
 def actionRecognition(skeletons, dispInfo):
@@ -44,7 +49,7 @@ def actionRecognition(skeletons, dispInfo):
 		if len(activitySequence)==numberOfClubsters:
 			# print 'Activity Sequence', activitySequence
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
-			print 'Word for activity to save: ',wordForActivity
+			print 'Word for activity to save: ', wordForActivity
 			ActivityFeatureComputation.saveWords(wordForActivity, activity)
 	# DETECT ACTIVITY. FINAL FASE
 	elif not training:
@@ -62,10 +67,3 @@ def actionRecognition(skeletons, dispInfo):
    #    # render text
    #    label = myfont.render("Some text!", 1, (255,255,0))
    #    screen.blit(label, (50, 50)) 			
-
-
-
-#CREATE CLUSTERS OF AN ACTIVITY
-if training and creatingClusters:
-	activityVector = PostureSelection.loadTrainingData(activityFile)
-	PostureSelection.createClusters(activityVector, numberOfClubsters)
