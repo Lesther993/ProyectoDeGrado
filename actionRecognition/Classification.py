@@ -6,7 +6,7 @@ import difflib
 def loadWords():
 	dicOfWords={}
 	wordsArray=[]
-	fo = open('actionRecognition/ActivitiesWords.txt', 'a+')
+	fo = open('actionRecognition/ActivityWords.txt', 'a+')
 	data = fo.readlines()
 	for word in data:
 		word.strip()

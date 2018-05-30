@@ -44,7 +44,7 @@ def createWordForActivity(activitySequence):
 	return ''.join(activitySequence)
 
 def saveWords(wordForActivity, activity):
-	fo = open('actionRecognition/ActivitiesWords.txt', 'a+')
+	fo = open('actionRecognition/ActivityWords.txt', 'a+')
 	d = { wordForActivity:activity }
 	print 'Activity word to save', d
 	fo.write(str(d)+'\n')

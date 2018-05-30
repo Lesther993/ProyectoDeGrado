@@ -6,13 +6,15 @@ import thread
 import pykinect
 from pykinect import nui
 from pykinect.nui import JointId
-# print(dir(JointId))
 
 import pygame
 from pygame.color import THECOLORS
 from pygame.locals import *
 from DrawSkeletonModule import drawSkeleton
+import actionRecognition.settings as settings
 from actionRecognition.ActionRecognitionModule import actionRecognition
+
+# aa = settings.activityDetected
 
 KINECTEVENT = pygame.USEREVENT
 DEPTH_WINSIZE = 640,480 #320,240
@@ -84,6 +86,10 @@ def init():
                 if draw_skeleton:
                     pygame.draw.rect(screen,THECOLORS["black"],(0,0,DEPTH_WINSIZE[0],DEPTH_WINSIZE[1]))
                     draw_skeletons(skeletons)
+                    # print settings.activityDetected
+                    myfont = pygame.font.SysFont("monospace", 25)
+                    label = myfont.render(settings.activityDetected, 1, (255,255,0))
+                    screen.blit(label, (50, 50))                                
                     pygame.display.update()
             elif e.type == KEYDOWN:
                 if e.key == K_ESCAPE:

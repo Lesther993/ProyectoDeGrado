@@ -61,9 +61,4 @@ def actionRecognition(skeletons, dispInfo):
 			words = Classification.loadWords()
 			global activityDetected
 			activityDetected = Classification.getActivity(words, wordForActivity)
-			print 'ACTIVITY DETECTED: ', activityDetected
-   #    myfont = pygame.font.SysFont("monospace", 15)
-
-   #    # render text
-   #    label = myfont.render("Some text!", 1, (255,255,0))
-   #    screen.blit(label, (50, 50)) 			
+			settings.activityDetected = activityDetected

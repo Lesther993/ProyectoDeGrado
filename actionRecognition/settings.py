@@ -7,3 +7,4 @@ numberOfClubsters = 5
 # activity = 'DAPT'
 # activity = 'Jumping'
 activity = 'Squats'
+activityDetected=''
