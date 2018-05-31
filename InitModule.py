@@ -112,9 +112,12 @@ def init():
                     pygame.draw.rect(screen,THECOLORS["black"],(0,0,DEPTH_WINSIZE[0],DEPTH_WINSIZE[1]))
                     draw_skeletons(skeletons)
                     # print settings.activityDetected
-                    myfont = pygame.font.SysFont("monospace", 25)
-                    label = myfont.render(settings.activityDetected, 1, (255,255,0))
-                    screen.blit(label, (50, 50))                                
+                    activityFont = pygame.font.SysFont("monospace", 25)
+                    activityLabel = activityFont.render(settings.activityDetected, 1, (255,255,0))
+                    screen.blit(activityLabel, (50, 50)) 
+                    counterFont = pygame.font.SysFont("monospace", 25)
+                    counterLabel = counterFont.render("Repetitions: " + str(settings.counter), 1, (0,255,0))
+                    screen.blit(counterLabel, (100, 100))                               
                     pygame.display.update()
             elif e.type == KEYDOWN:
                 if e.key == K_ESCAPE:
