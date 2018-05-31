@@ -12,9 +12,8 @@ from pygame.color import THECOLORS
 from pygame.locals import *
 from DrawSkeletonModule import drawSkeleton
 import actionRecognition.settings as settings
-from actionRecognition.ActionRecognitionModule import actionRecognition
-from actionRecognition.ActionRecognitionModule import PostureSelectionMethod
-
+from actionRecognition.ActionRecognitionModule import actionRecognition, PostureSelectionMethod
+import actionRecognition.Counter as Counter
 
 KINECTEVENT = pygame.USEREVENT
 DEPTH_WINSIZE = 640,480 #320,240
@@ -60,7 +59,12 @@ def init():
                 print "Save Training Data in Posture Selection phase..."
     else:
         settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
-        print "Test phase..."
+        settings.monitorActivity = ast.literal_eval(raw_input("Monitor Activity?: "))
+        if settings.monitorActivity:
+            settings.activity = raw_input("Activity to monitor?: ")
+            print "Monitoring mode..."
+        else: 
+            print "Test phase..."
 
 
     if not (settings.creatingClusters):
@@ -86,10 +90,8 @@ def init():
                 # event queue full
                 pass
 
-        kinect.skeleton_frame_ready += post_frame
-        
-        kinect.depth_frame_ready += depth_frame_ready    
-        
+        kinect.skeleton_frame_ready += post_frame        
+        kinect.depth_frame_ready += depth_frame_ready            
         kinect.video_stream.open(nui.ImageStreamType.Video, 2, nui.ImageResolution.Resolution640x480, nui.ImageType.Color)
         kinect.depth_stream.open(nui.ImageStreamType.Depth, 2, nui.ImageResolution.Resolution320x240, nui.ImageType.Depth)
 
@@ -101,6 +103,8 @@ def init():
             dispInfo = pygame.display.Info()
             if e.type == pygame.QUIT:
                 done = True
+                if settings.monitorActivity:
+                    Counter.saveActivityCounterData(settings.counter, settings.activity)
                 break
             elif e.type == KINECTEVENT:
                 skeletons = e.skeletons
@@ -115,4 +119,6 @@ def init():
             elif e.type == KEYDOWN:
                 if e.key == K_ESCAPE:
                     done = True
+                    if settings.monitorActivity:
+                        Counter.saveActivityCounterData(settings.counter, settings.activity)
                     break

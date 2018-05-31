@@ -1,1 +1,12 @@
-{'ebaca': 'Jumping'}
+{'igjgj': 'Waving Right Hand'}
+{'jgjgj': 'Waving Right Hand'}
+{'jgjgj': 'Waving Right Hand'}
+{'jgjgj': 'Waving Right Hand'}
+{'jgjgj': 'Waving Right Hand'}
+{'jgjgj': 'Waving Right Hand'}
+{'iaiai': 'Waving Left Hand'}
+{'iaiai': 'Waving Left Hand'}
+{'iaiai': 'Waving Left Hand'}
+{'iaiai': 'Waving Left Hand'}
+{'iaiai': 'Waving Left Hand'}
+{'aiaih': 'Waving Left Hand'}

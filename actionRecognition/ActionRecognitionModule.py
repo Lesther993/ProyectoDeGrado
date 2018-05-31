@@ -5,7 +5,7 @@ import PostureSelection
 import ActivityFeatureComputation
 import Classification
 import pygame
-
+import Counter
 # training = settings.training
 # creatingClusters = settings.creatingClusters
 # creatingActivitySequence = settings.creatingActivitySequence
@@ -39,7 +39,6 @@ creatingActivitySequence = settings.creatingActivitySequence
 if (not training) or (training and creatingActivitySequence):
 	clusters = ActivityFeatureComputation.loadClusters()
 	words = Classification.loadWords()
-	# print 'clusters: \n', clusters
 
 
 def actionRecognition(skeletons, dispInfo):
@@ -56,7 +55,6 @@ def actionRecognition(skeletons, dispInfo):
 	s = PostureFeatureExtration.jointsDetection(skeleton, dispInfo)
 	#ARRAY OF JOINTS NORMALIZED. POSTURE VECTOR
 	f = PostureFeatureExtration.jointsNormalization(s)
-	# print 'Joints normalized: \n', f
 	global activitySequence
 	if training and not creatingClusters and not creatingActivitySequence: #SAVE TRAINING DATA
 
@@ -76,6 +74,8 @@ def actionRecognition(skeletons, dispInfo):
 	elif not training:
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
 		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence, postureLabel, numberOfClubsters)
+		if settings.monitorActivity:
+			settings.counter = Counter.ActivityCounter(activity, activitySequence, postureLabel, settings.counter)
 		if len(activitySequence)==numberOfClubsters:
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
 			print 'Word for activity to compare: ', wordForActivity

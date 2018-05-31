@@ -8,3 +8,5 @@ numberOfClubsters = 0
 # activity = 'Jumping'
 activity = ''
 activityDetected=''
+monitorActivity=False
+counter=0
