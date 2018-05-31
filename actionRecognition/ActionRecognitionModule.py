@@ -6,31 +6,51 @@ import ActivityFeatureComputation
 import Classification
 import pygame
 
-training = settings.training
-creatingClusters = settings.creatingClusters
-creatingActivitySequence = settings.creatingActivitySequence
-numberOfClubsters = settings.numberOfClubsters
-activity = settings.activity
-activityFile = settings.activity.title().replace(" ","")
+# training = settings.training
+# creatingClusters = settings.creatingClusters
+# creatingActivitySequence = settings.creatingActivitySequence
+# numberOfClubsters = settings.numberOfClubsters
+# activity = settings.activity
+# activityFile = settings.activity.title().replace(" ","")
 
 
 
 
 
 #CREATE CLUSTERS OF AN ACTIVITY
-if training and creatingClusters:
+# if training and creatingClusters:
+# 	activityVector = PostureSelection.loadTrainingData(activityFile)
+# 	PostureSelection.createClusters(activityVector, numberOfClubsters)
+
+
+def PostureSelectionMethod():
+	# if training and creatingClusters:
+	activityFile = settings.activity.title().replace(" ","")
+	numberOfClubsters = settings.numberOfClubsters
 	activityVector = PostureSelection.loadTrainingData(activityFile)
-	PostureSelection.createClusters(activityVector, numberOfClubsters)
+	PostureSelection.createClusters(activityVector, numberOfClubsters)	
+
 
 
 activitySequence =[]
 #LOAD CLOSTERS
+training = settings.training
+creatingActivitySequence = settings.creatingActivitySequence
 if (not training) or (training and creatingActivitySequence):
 	clusters = ActivityFeatureComputation.loadClusters()
+	words = Classification.loadWords()
 	# print 'clusters: \n', clusters
 
 
 def actionRecognition(skeletons, dispInfo):
+
+	training = settings.training
+	creatingClusters = settings.creatingClusters
+	creatingActivitySequence = settings.creatingActivitySequence
+	numberOfClubsters = settings.numberOfClubsters
+	activity = settings.activity
+	activityFile = settings.activity.title().replace(" ","")
+
 	skeleton = skeletons[0]
 	#ARRAY OF JOINTS COORDINATES
 	s = PostureFeatureExtration.jointsDetection(skeleton, dispInfo)
@@ -46,6 +66,7 @@ def actionRecognition(skeletons, dispInfo):
 	elif training and creatingActivitySequence:
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
 		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence, postureLabel, numberOfClubsters)
+		# print "activitySequence",activitySequence
 		if len(activitySequence)==numberOfClubsters:
 			# print 'Activity Sequence', activitySequence
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
@@ -58,7 +79,8 @@ def actionRecognition(skeletons, dispInfo):
 		if len(activitySequence)==numberOfClubsters:
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
 			print 'Word for activity to compare: ', wordForActivity
-			words = Classification.loadWords()
 			global activityDetected
 			activityDetected = Classification.getActivity(words, wordForActivity)
 			settings.activityDetected = activityDetected
+
+

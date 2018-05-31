@@ -1,7 +1,7 @@
 
 
 import thread
-# import itertools
+import ast
 
 import pykinect
 from pykinect import nui
@@ -13,8 +13,8 @@ from pygame.locals import *
 from DrawSkeletonModule import drawSkeleton
 import actionRecognition.settings as settings
 from actionRecognition.ActionRecognitionModule import actionRecognition
+from actionRecognition.ActionRecognitionModule import PostureSelectionMethod
 
-# aa = settings.activityDetected
 
 KINECTEVENT = pygame.USEREVENT
 DEPTH_WINSIZE = 640,480 #320,240
@@ -42,7 +42,28 @@ def depth_frame_ready(frame):
 
 
 def init():
-    if True:
+
+    settings.training = ast.literal_eval(raw_input("Training phase?: "))
+    if settings.training:
+        settings.activity = raw_input("Activity to save?: ")
+        settings.creatingClusters = ast.literal_eval(raw_input("Creating Clusters?: "))
+        if settings.creatingClusters:
+            settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
+            print "Creating Clusters in Posture Selection phase..."
+            PostureSelectionMethod()
+        else:
+            settings.creatingActivitySequence = ast.literal_eval(raw_input("Creating Activity Sequence?: "))
+            if settings.creatingActivitySequence:
+                settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
+                print "Creating Activity Sequence in Activity Feature Computation phase..."
+            else:
+                print "Save Training Data in Posture Selection phase..."
+    else:
+        settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
+        print "Test phase..."
+
+
+    if not (settings.creatingClusters):
         global screen_lock
         global screen
         global dispInfo

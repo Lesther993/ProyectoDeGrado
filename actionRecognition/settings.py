@@ -1,10 +1,10 @@
 training = False
 creatingClusters = False
-creatingActivitySequence = True
-numberOfClubsters = 5
+creatingActivitySequence = False
+numberOfClubsters = 0
 # activity = 'Jumping Jax'
 # activity = 'Waving left hand'
 # activity = 'DAPT'
 # activity = 'Jumping'
-activity = 'Squats'
+activity = ''
 activityDetected=''
