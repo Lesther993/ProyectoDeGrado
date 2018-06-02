@@ -32,7 +32,9 @@ def PostureSelectionMethod():
 
 
 
-activitySequence =[]
+activitySequence = []
+lastPosture=''
+
 #LOAD CLOSTERS
 training = settings.training
 creatingActivitySequence = settings.creatingActivitySequence
@@ -56,6 +58,7 @@ def actionRecognition(skeletons, dispInfo):
 	#ARRAY OF JOINTS NORMALIZED. POSTURE VECTOR
 	f = PostureFeatureExtration.jointsNormalization(s)
 	global activitySequence
+	global lastPosture
 	if training and not creatingClusters and not creatingActivitySequence: #SAVE TRAINING DATA
 
 		if len(f)>0:
@@ -75,7 +78,7 @@ def actionRecognition(skeletons, dispInfo):
 		postureLabel = ActivityFeatureComputation.createPostureLabel(clusters, f)
 		activitySequence = ActivityFeatureComputation.createActivitySequence(activitySequence, postureLabel, numberOfClubsters)
 		if settings.monitorActivity:
-			settings.counter = Counter.ActivityCounter(activity, activitySequence, postureLabel, settings.counter)
+			(lastPosture, settings.counter) = Counter.ActivityCounter(activity, lastPosture, postureLabel, settings.counter)
 		if len(activitySequence)==numberOfClubsters:
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
 			print 'Word for activity to compare: ', wordForActivity

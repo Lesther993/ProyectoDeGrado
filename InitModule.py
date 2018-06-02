@@ -115,9 +115,10 @@ def init():
                     activityFont = pygame.font.SysFont("monospace", 25)
                     activityLabel = activityFont.render(settings.activityDetected, 1, (255,255,0))
                     screen.blit(activityLabel, (50, 50)) 
-                    counterFont = pygame.font.SysFont("monospace", 25)
-                    counterLabel = counterFont.render("Repetitions: " + str(settings.counter), 1, (0,255,0))
-                    screen.blit(counterLabel, (100, 100))                               
+                    if settings.monitorActivity:
+                        counterFont = pygame.font.SysFont("monospace", 25)
+                        counterLabel = counterFont.render("Repetitions: " + str(int(settings.counter)), 1, (0,255,0))
+                        screen.blit(counterLabel, (100, 100))                                                   
                     pygame.display.update()
             elif e.type == KEYDOWN:
                 if e.key == K_ESCAPE:

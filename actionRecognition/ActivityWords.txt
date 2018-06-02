@@ -1,12 +1,66 @@
-{'igjgj': 'Waving Right Hand'}
-{'jgjgj': 'Waving Right Hand'}
-{'jgjgj': 'Waving Right Hand'}
-{'jgjgj': 'Waving Right Hand'}
-{'jgjgj': 'Waving Right Hand'}
-{'jgjgj': 'Waving Right Hand'}
-{'iaiai': 'Waving Left Hand'}
-{'iaiai': 'Waving Left Hand'}
-{'iaiai': 'Waving Left Hand'}
-{'iaiai': 'Waving Left Hand'}
-{'iaiai': 'Waving Left Hand'}
-{'aiaih': 'Waving Left Hand'}
+{'riqrs': 'Jumping'}
+{'qtsqr': 'Jumping'}
+{'sqrsq': 'Jumping'}
+{'trsqr': 'Jumping'}
+{'rqtrs': 'Jumping'}
+{'trqtq': 'Jumping'}
+{'rqtsq': 'Jumping'}
+{'qtstq': 'Jumping'}
+{'trsrq': 'Jumping'}
+{'tqsrq': 'Jumping'}
+{'tsqtr': 'Jumping'}
+{'sqsrq': 'Jumping'}
+{'qsqis': 'Jumping'}
+{'siqtq': 'Jumping'}
+{'stsqt': 'Jumping'}
+{'sqtsr': 'Jumping'}
+{'isbhd': 'Jumping Jax'}
+{'gagdh': 'Jumping Jax'}
+{'ribhd': 'Jumping Jax'}
+{'agdhb': 'Jumping Jax'}
+{'isbhd': 'Jumping Jax'}
+{'agdhb': 'Jumping Jax'}
+{'ibhda': 'Jumping Jax'}
+{'gdhbr': 'Jumping Jax'}
+{'ibhdg': 'Jumping Jax'}
+{'gdhbr': 'Jumping Jax'}
+{'ibhdg': 'Jumping Jax'}
+{'agdht': 'Jumping Jax'}
+{'isbhd': 'Jumping Jax'}
+{'gaghb': 'Jumping Jax'}
+{'isbhd': 'Jumping Jax'}
+{'gagdh': 'Jumping Jax'}
+{'irbhd': 'Jumping Jax'}
+{'gdbri': 'Jumping Jax'}
+{'sbhdg': 'Jumping Jax'}
+{'dhbrs': 'Jumping Jax'}
+{'sbhdg': 'Jumping Jax'}
+{'dhris': 'Jumping Jax'}
+{'rblmf': 'Squats'}
+{'fofmf': 'Squats'}
+{'fofmf': 'Squats'}
+{'ofmfo': 'Squats'}
+{'ofmfo': 'Squats'}
+{'ofmfo': 'Squats'}
+{'kbkhd': 'Dumbbell Shoulder Press'}
+{'gagdh': 'Dumbbell Shoulder Press'}
+{'hdgag': 'Dumbbell Shoulder Press'}
+{'gdhdg': 'Dumbbell Shoulder Press'}
+{'gagdh': 'Dumbbell Shoulder Press'}
+{'hdgag': 'Dumbbell Shoulder Press'}
+{'gdhdg': 'Dumbbell Shoulder Press'}
+{'gagdh': 'Dumbbell Shoulder Press'}
+{'hdgag': 'Dumbbell Shoulder Press'}
+{'gdhdg': 'Dumbbell Shoulder Press'}
+{'gagdh': 'Dumbbell Shoulder Press'}
+{'hdgag': 'Dumbbell Shoulder Press'}
+{'gdhdg': 'Dumbbell Shoulder Press'}
+{'gagdh': 'Dumbbell Shoulder Press'}
+{'plene': 'Biceps Curl'}
+{'elple': 'Biceps Curl'}
+{'nelpl': 'Biceps Curl'}
+{'lenel': 'Biceps Curl'}
+{'lplen': 'Biceps Curl'}
+{'nelpl': 'Biceps Curl'}
+{'lenel': 'Biceps Curl'}
+{'lplen': 'Biceps Curl'}

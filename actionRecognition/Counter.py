@@ -4,15 +4,17 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-def ActivityCounter(activity, activitySequence, postureLabel, _counter):
+def ActivityCounter(activity, posture, postureLabel, _counter):
 	counter = _counter
-	print "counter:", counter
-	if postureLabel !=-1 and formatLabel(postureLabel)==postureToDetect(activity):
-		if len(activitySequence)==0:
-			counter+=1
-		elif formatLabel(postureLabel)!=activitySequence[len(activitySequence)-1]:
-			counter+=1
-	return counter
+	lastPosture = posture
+
+	if postureLabel!=-1:
+		if formatLabel(postureLabel)!=lastPosture:
+			lastPosture=formatLabel(postureLabel)
+			if formatLabel(postureLabel)==postureToDetect(activity):
+				counter+=0.5
+
+	return (lastPosture, counter)
 
 
 def saveActivityCounterData(counter,activity):
@@ -31,7 +33,7 @@ def saveActivityCounterData(counter,activity):
 		_activityHistory = data[0]
 		_activityHistory.strip()
 		activityHistory = ast.literal_eval(_activityHistory)
-		activityHistory['repetitions'].append(counter)
+		activityHistory['repetitions'].append(int(counter))
 		if len(activityHistory['days'])==0:
 			activityHistory['days'].append(1)
 		else:
@@ -53,7 +55,6 @@ def saveActivityCounterData(counter,activity):
 		fo.close()
 
 
-# saveActivityCounterData(34,"Jumping")
 
 
 
@@ -61,13 +62,14 @@ def formatLabel(postureLabel):
 	return str(unichr(postureLabel+97))
 
 def postureToDetect(activity):
-	switcher ={
-		"Waving Right Hand":"g",
-		"Waving Left Hand":"a"
-		# "Jumping":"m",
-		# "Jumping Jax":"b",
-		# "Squats":"g"
+	switcher = {
+		# "Waving Right Hand":"g",
+		# "Waving Left Hand":"a"
+		'Jumping':'q',
+		'Jumping Jax':'h',
+		'Squats':'f',
+		'Dumbbell Shoulder Press':'g',
+		'Biceps Curl':'l'
 	}
-	return switcher.get(activity,"Unknown")
+	return switcher.get(activity,'Unknown')
 
-# print postureToDetect("Jumping Jax")

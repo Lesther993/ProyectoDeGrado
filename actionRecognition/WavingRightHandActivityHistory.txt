@@ -1,1 +1,0 @@
-{'repetitions': [0, 11], 'days': [1, 2]}
