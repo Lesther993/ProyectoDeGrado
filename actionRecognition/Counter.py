@@ -65,11 +65,11 @@ def postureToDetect(activity):
 	switcher = {
 		# "Waving Right Hand":"g",
 		# "Waving Left Hand":"a"
-		'Jumping':'q',
-		'Jumping Jax':'h',
-		'Squats':'f',
-		'Dumbbell Shoulder Press':'g',
-		'Biceps Curl':'l'
+		'Jumping':'y',
+		'Jumping Jax':'f',
+		'Squats':'q',
+		'Dumbbell Shoulder Press':'m',
+		'Biceps Curl':'t'
 	}
 	return switcher.get(activity,'Unknown')
 
