@@ -63,7 +63,7 @@ contract ActionRecognition is owned {
 
   event ClustersAdded(uint256 n_clusters);
 
-  event ActivityWordAdded(string wordForActivity, string activity); 
+  event ActivityWordAdded(uint256 n_words, string activity); 
 
   event ActivityAdded(string activity);
 
@@ -79,11 +79,42 @@ contract ActionRecognition is owned {
     return true;
   }
 
-  function saveWords(string wordForActivity, string activity) onlyOwner public returns(bool){
+  function save1Word(string activity,string wordForActivity) onlyOwner public returns(bool){
     wordInfo.push(activityInfo({ word:wordForActivity, name:activity }));
-    emit ActivityWordAdded(wordForActivity, activity);
+    emit ActivityWordAdded(1, activity);
     return true;
   }
+
+  function save4Words(string activity,string wordForActivity1,string wordForActivity2,string wordForActivity3,string wordForActivity4) onlyOwner public returns(bool){
+    wordInfo.push(activityInfo({ word:wordForActivity1, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity2, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity3, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity4, name:activity }));
+    emit ActivityWordAdded(4, activity);
+    return true;
+  }
+
+  function save5Words(string activity,string wordForActivity1,string wordForActivity2,string wordForActivity3,string wordForActivity4,string wordForActivity5) onlyOwner public returns(bool){
+    wordInfo.push(activityInfo({ word:wordForActivity1, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity2, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity3, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity4, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity5, name:activity }));
+    emit ActivityWordAdded(5, activity);
+    return true;
+  } 
+
+  function save6Words(string activity,string wordForActivity1,string wordForActivity2,string wordForActivity3,string wordForActivity4,string wordForActivity5,string wordForActivity6) onlyOwner public returns(bool){
+    wordInfo.push(activityInfo({ word:wordForActivity1, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity2, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity3, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity4, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity5, name:activity }));
+    wordInfo.push(activityInfo({ word:wordForActivity6, name:activity }));
+    emit ActivityWordAdded(6, activity);
+    return true;
+  }    
+
 
   function saveActivity(string activity) onlyOwner public returns(bool){
     activities.push(activity);

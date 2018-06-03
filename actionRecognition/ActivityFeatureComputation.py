@@ -1,15 +1,22 @@
 import ast
 from sklearn.cluster import KMeans
 import numpy as np
+import settings
+import requests
+import json
 
 def loadClusters():
-	clusters=[]
-	fo = open('actionRecognition/Clusters.txt', 'a+')
-	data = fo.readlines()
-	for cluster in data:
-		cluster.strip()
-		clusters.append(ast.literal_eval(cluster))
-	fo.close()
+	if settings.blockchain:
+		r = requests.post("http://localhost:4200/action-recognition/loadClusters")
+		clusters = json.loads(r.content)[u'data'].values()[0]
+	else:
+		clusters=[]
+		fo = open('actionRecognition/Clusters.txt', 'a+')
+		data = fo.readlines()
+		for cluster in data:
+			cluster.strip()
+			clusters.append(ast.literal_eval(cluster))
+		fo.close()
 	return clusters
 
 def createPostureLabel(clusters, Posturefeature):
@@ -46,7 +53,7 @@ def createWordForActivity(activitySequence):
 def saveWords(wordForActivity, activity):
 	fo = open('actionRecognition/ActivityWords.txt', 'a+')
 	d = { wordForActivity:activity }
-	print 'Activity word to save', d
+	print ('Activity word to save', d)
 	fo.write(str(d)+'\n')
 	fo.close()
 

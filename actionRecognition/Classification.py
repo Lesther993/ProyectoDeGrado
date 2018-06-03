@@ -1,17 +1,23 @@
 import ast
 import difflib
-# from difflib import get_close_matches
-
+import settings
+import requests
+import json
 
 def loadWords():
 	dicOfWords={}
-	wordsArray=[]
-	fo = open('actionRecognition/ActivityWords.txt', 'a+')
-	data = fo.readlines()
-	for word in data:
-		word.strip()
-		word = ast.literal_eval(word)
-		dicOfWords[word.keys()[0]] = word.values()[0]
+	if settings.blockchain:
+		r = requests.post("http://localhost:4200/action-recognition/loadWords")
+		data = json.loads(r.content)[u'data'].values()[0]
+		for word in data:
+			dicOfWords[str(word[u'word'])] = str(word[u'name'])
+	else:
+		fo = open('actionRecognition/ActivityWords.txt', 'a+')
+		data = fo.readlines()
+		for word in data:
+			word.strip()
+			word = ast.literal_eval(word)
+			dicOfWords[word.keys()[0]] = word.values()[0]
 	return dicOfWords
 
 def getActivity(dicOfWords, word):

@@ -66,7 +66,7 @@ def postureToDetect(activity):
 		# "Waving Right Hand":"g",
 		# "Waving Left Hand":"a"
 		'Jumping':'y',
-		'Jumping Jax':'f',
+		'Jumping Jacks':'f',
 		'Squats':'q',
 		'Dumbbell Shoulder Press':'m',
 		'Biceps Curl':'t'

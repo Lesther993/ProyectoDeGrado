@@ -71,7 +71,7 @@ def actionRecognition(skeletons, dispInfo):
 		if len(activitySequence)==numberOfClubsters:
 			# print 'Activity Sequence', activitySequence
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
-			print 'Word for activity to save: ', wordForActivity
+			print('Word for activity to save: ', wordForActivity)
 			ActivityFeatureComputation.saveWords(wordForActivity, activity)
 	# DETECT ACTIVITY. FINAL FASE
 	elif not training:
@@ -81,7 +81,7 @@ def actionRecognition(skeletons, dispInfo):
 			(lastPosture, settings.counter) = Counter.ActivityCounter(activity, lastPosture, postureLabel, settings.counter)
 		if len(activitySequence)==numberOfClubsters:
 			wordForActivity = ActivityFeatureComputation.createWordForActivity(activitySequence)
-			print 'Word for activity to compare: ', wordForActivity
+			print('Word for activity to compare: ', wordForActivity)
 			global activityDetected
 			activityDetected = Classification.getActivity(words, wordForActivity)
 			settings.activityDetected = activityDetected

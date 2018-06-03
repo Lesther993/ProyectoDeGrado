@@ -48,23 +48,27 @@ def init():
         settings.creatingClusters = ast.literal_eval(raw_input("Creating Clusters?: "))
         if settings.creatingClusters:
             settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
-            print "Creating Clusters in Posture Selection phase..."
+            print("Creating Clusters in Posture Selection phase...")
             PostureSelectionMethod()
         else:
             settings.creatingActivitySequence = ast.literal_eval(raw_input("Creating Activity Sequence?: "))
             if settings.creatingActivitySequence:
                 settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
-                print "Creating Activity Sequence in Activity Feature Computation phase..."
+                print("Creating Activity Sequence in Activity Feature Computation phase...")
             else:
-                print "Save Training Data in Posture Selection phase..."
+                print("Save Training Data in Posture Selection phase...")
     else:
-        settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
+        settings.blockchain = ast.literal_eval(raw_input("Use Activities saved on Blockchain?: "))
+        if settings.blockchain:
+            settings.numberOfClubsters = 5
+        else:
+            settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
         settings.monitorActivity = ast.literal_eval(raw_input("Monitor Activity?: "))
         if settings.monitorActivity:
             settings.activity = raw_input("Activity to monitor?: ")
-            print "Monitoring mode..."
+            print("Monitoring mode...")
         else: 
-            print "Test phase..."
+            print("Test phase...")
 
 
     if not (settings.creatingClusters):
