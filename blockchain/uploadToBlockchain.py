@@ -13,10 +13,13 @@ web3 = Web3(HTTPProvider(environment.nodeURL))
 unicorns = web3.eth.contract(address=environment.contractAddress, abi=json.loads(environment.contractABI))
 
 
-def saveClusters():
-	formatedClusters = [multiplyByPRecision(x) for x in clusters]
 
-	unicorn_txn = unicorns.functions.saveClusters(formatedClusters[0],formatedClusters[1],formatedClusters[2],formatedClusters[3],formatedClusters[4]).buildTransaction({
+def saveClusters():
+	lot = environment.lot
+
+	formatedClusters = [multiplyByPRecision(x) for x in clusters]
+	
+	unicorn_txn = unicorns.functions.saveClusters(formatedClusters[(5*lot)-5],formatedClusters[(5*lot)-4],formatedClusters[(5*lot)-3],formatedClusters[(5*lot)-2],formatedClusters[(5*lot)-1]).buildTransaction({
 																							'gas': 2500000,
 																							'gasPrice': web3.eth.gasPrice,
 																							'nonce': web3.eth.getTransactionCount(environment.address_from)})
@@ -26,6 +29,8 @@ def saveClusters():
 	tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)  
 
 	print ('Clusters data sent to Blockchain. Tx hash:',tx_hash.hex())
+
+	print('Wating for confirmation...')
 
 	print ('Clusters data confirmed at block:',web3.eth.waitForTransactionReceipt(tx_hash).blockNumber)
 

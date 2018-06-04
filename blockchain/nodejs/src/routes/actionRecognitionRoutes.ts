@@ -14,7 +14,12 @@ actionRecognitionRoutes.route('/loadClusters').post((req,res)=>{
 
 actionRecognitionRoutes.route('/loadWords').post((req,res)=>{
 
-	res.send({success:true,data:ActionRecognition.loadWords(),error:null});
+	ActionRecognition.loadWords().then((response)=>{
+		res.send(response);
+	}).catch((err)=>{
+		res.send(err);
+	})
+	// res.send({success:true,data:ActionRecognition.loadWords(),error:null});
 	
 });
 

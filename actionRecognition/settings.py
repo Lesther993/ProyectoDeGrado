@@ -11,3 +11,5 @@ activityDetected=''
 monitorActivity=False
 counter=0
 blockchain=False
+clusters=[]
+words=''

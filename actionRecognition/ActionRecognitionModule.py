@@ -36,11 +36,11 @@ activitySequence = []
 lastPosture=''
 
 #LOAD CLOSTERS
-training = settings.training
-creatingActivitySequence = settings.creatingActivitySequence
-if (not training) or (training and creatingActivitySequence):
-	clusters = ActivityFeatureComputation.loadClusters()
-	words = Classification.loadWords()
+# training = settings.training
+# creatingActivitySequence = settings.creatingActivitySequence
+# if (not training) or (training and creatingActivitySequence):
+# 	clusters = ActivityFeatureComputation.loadClusters()
+# 	words = Classification.loadWords()
 
 
 def actionRecognition(skeletons, dispInfo):
@@ -51,6 +51,8 @@ def actionRecognition(skeletons, dispInfo):
 	numberOfClubsters = settings.numberOfClubsters
 	activity = settings.activity
 	activityFile = settings.activity.title().replace(" ","")
+	clusters = settings.clusters
+	words = settings.words
 
 	skeleton = skeletons[0]
 	#ARRAY OF JOINTS COORDINATES

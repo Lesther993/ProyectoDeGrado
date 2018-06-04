@@ -13,6 +13,8 @@ from pygame.locals import *
 from DrawSkeletonModule import drawSkeleton
 import actionRecognition.settings as settings
 from actionRecognition.ActionRecognitionModule import actionRecognition, PostureSelectionMethod
+import actionRecognition.ActivityFeatureComputation as ActivityFeatureComputation
+import actionRecognition.Classification as Classification
 import actionRecognition.Counter as Counter
 
 KINECTEVENT = pygame.USEREVENT
@@ -54,11 +56,14 @@ def init():
             settings.creatingActivitySequence = ast.literal_eval(raw_input("Creating Activity Sequence?: "))
             if settings.creatingActivitySequence:
                 settings.numberOfClubsters = ast.literal_eval(raw_input("Number of Clusters per Activity?: "))
+                settings.clusters = ActivityFeatureComputation.loadClusters()
                 print("Creating Activity Sequence in Activity Feature Computation phase...")
             else:
                 print("Save Training Data in Posture Selection phase...")
     else:
         settings.blockchain = ast.literal_eval(raw_input("Use Activities saved on Blockchain?: "))
+        settings.clusters = ActivityFeatureComputation.loadClusters()
+        settings.words = Classification.loadWords()
         if settings.blockchain:
             settings.numberOfClubsters = 5
         else:

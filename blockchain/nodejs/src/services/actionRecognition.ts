@@ -27,8 +27,11 @@ private web3:web3;
 		try{
 			let index = this.myContractInstance.totalClusters();
 			let clusters = [];
-			for(let i=0;i<index;i++){
-				clusters.push( this.myContractInstance.loadClusters(i).map((x)=>x*Math.pow(10,-10)) );
+			let data;
+			for(let i=25;i<index;i++){
+				data = this.myContractInstance.loadClusters(i).map((x)=>x*Math.pow(10,-10));
+				console.log(data);
+				clusters.push( data );
 			}
 			return ({ success:true, data:clusters, error:null });
 		}catch(err){
@@ -36,23 +39,45 @@ private web3:web3;
 		}		 
 	}
 
-	public loadWords():any{
-		try{
+	public loadWords():Promise<any>{
 			let index = this.myContractInstance.totalWords();
-			let words = [];
-			let f = {};
-			for(let i=0;i<index;i++){
-				f = {
-					name:this.myContractInstance.loadWords(i)[0],
-					word:this.myContractInstance.loadWords(i)[1]
-				}
-				words.push(f);
-			}
-			return ({ success:true, data:words, error:null });
-		}catch(err){
-			return ({ success:false, data:null, error:String(err)});
-		}		 
+			console.log(index)
+			return new Promise((resolve,reject)=>{
+				this.forLoop([], 0, index).then((response)=>{
+					resolve({ success:true, data:response, error:null });
+				}).catch((err)=>{
+					reject({ success:false, data:null, error:err});
+				});
+			});
 	}	
 
+	public forLoop(_word,_i,index){
+		let i = _i;
+		let word = _word;
+		return new Promise((resolve,reject)=>{
+			if (i<index) { 
+				this.myContractInstance.loadWords(i,(error, result)=>{
+					if(!error){
+						console.log(result);
+						let f = {
+						name:result[0],
+						word:result[1]
+						}				
+						word.push(f);
+						i++;
+						setTimeout(()=>{
+							resolve(this.forLoop(word,i,index));
+						},700);
+
+					}else{
+						reject(String(error));
+					}
+				});
+			} else {
+				resolve(word);
+			}
+			
+		});
+	}
 
 }
